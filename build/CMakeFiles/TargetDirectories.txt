@@ -1,0 +1,3 @@
+/home/dev-test/projects/rpi-el/build/CMakeFiles/rpi_info.dir
+/home/dev-test/projects/rpi-el/build/CMakeFiles/edit_cache.dir
+/home/dev-test/projects/rpi-el/build/CMakeFiles/rebuild_cache.dir
