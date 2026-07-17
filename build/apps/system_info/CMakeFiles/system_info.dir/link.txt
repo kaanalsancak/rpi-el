@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/system_info.dir/link.d CMakeFiles/system_info.dir/main.c.o -o system_info

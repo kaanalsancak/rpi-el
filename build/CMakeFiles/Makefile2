@@ -54,61 +54,122 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dev-test/projects/rpi-el
+CMAKE_SOURCE_DIR = /home/admin/projects/rpi-el
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dev-test/projects/rpi-el/build
+CMAKE_BINARY_DIR = /home/admin/projects/rpi-el/build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/rpi_info.dir/all
+all: apps/all
+all: libs/all
 .PHONY : all
 
 # The main recursive "codegen" target.
-codegen: CMakeFiles/rpi_info.dir/codegen
+codegen: apps/codegen
+codegen: libs/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
-preinstall:
+preinstall: apps/preinstall
+preinstall: libs/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/rpi_info.dir/clean
+clean: apps/clean
+clean: libs/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/rpi_info.dir
+# Directory level rules for directory apps
+
+# Recursive "all" directory target.
+apps/all: apps/system_info/all
+.PHONY : apps/all
+
+# Recursive "codegen" directory target.
+apps/codegen: apps/system_info/codegen
+.PHONY : apps/codegen
+
+# Recursive "preinstall" directory target.
+apps/preinstall: apps/system_info/preinstall
+.PHONY : apps/preinstall
+
+# Recursive "clean" directory target.
+apps/clean: apps/system_info/clean
+.PHONY : apps/clean
+
+#=============================================================================
+# Directory level rules for directory apps/system_info
+
+# Recursive "all" directory target.
+apps/system_info/all: apps/system_info/CMakeFiles/system_info.dir/all
+.PHONY : apps/system_info/all
+
+# Recursive "codegen" directory target.
+apps/system_info/codegen: apps/system_info/CMakeFiles/system_info.dir/codegen
+.PHONY : apps/system_info/codegen
+
+# Recursive "preinstall" directory target.
+apps/system_info/preinstall:
+.PHONY : apps/system_info/preinstall
+
+# Recursive "clean" directory target.
+apps/system_info/clean: apps/system_info/CMakeFiles/system_info.dir/clean
+.PHONY : apps/system_info/clean
+
+#=============================================================================
+# Directory level rules for directory libs
+
+# Recursive "all" directory target.
+libs/all:
+.PHONY : libs/all
+
+# Recursive "codegen" directory target.
+libs/codegen:
+.PHONY : libs/codegen
+
+# Recursive "preinstall" directory target.
+libs/preinstall:
+.PHONY : libs/preinstall
+
+# Recursive "clean" directory target.
+libs/clean:
+.PHONY : libs/clean
+
+#=============================================================================
+# Target rules for target apps/system_info/CMakeFiles/system_info.dir
 
 # All Build rule for target.
-CMakeFiles/rpi_info.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rpi_info.dir/build.make CMakeFiles/rpi_info.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rpi_info.dir/build.make CMakeFiles/rpi_info.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dev-test/projects/rpi-el/build/CMakeFiles --progress-num=1,2 "Built target rpi_info"
-.PHONY : CMakeFiles/rpi_info.dir/all
+apps/system_info/CMakeFiles/system_info.dir/all:
+	$(MAKE) $(MAKESILENT) -f apps/system_info/CMakeFiles/system_info.dir/build.make apps/system_info/CMakeFiles/system_info.dir/depend
+	$(MAKE) $(MAKESILENT) -f apps/system_info/CMakeFiles/system_info.dir/build.make apps/system_info/CMakeFiles/system_info.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/admin/projects/rpi-el/build/CMakeFiles --progress-num=1,2 "Built target system_info"
+.PHONY : apps/system_info/CMakeFiles/system_info.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/rpi_info.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev-test/projects/rpi-el/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/rpi_info.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dev-test/projects/rpi-el/build/CMakeFiles 0
-.PHONY : CMakeFiles/rpi_info.dir/rule
+apps/system_info/CMakeFiles/system_info.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/admin/projects/rpi-el/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 apps/system_info/CMakeFiles/system_info.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/admin/projects/rpi-el/build/CMakeFiles 0
+.PHONY : apps/system_info/CMakeFiles/system_info.dir/rule
 
 # Convenience name for target.
-rpi_info: CMakeFiles/rpi_info.dir/rule
-.PHONY : rpi_info
+system_info: apps/system_info/CMakeFiles/system_info.dir/rule
+.PHONY : system_info
 
 # codegen rule for target.
-CMakeFiles/rpi_info.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rpi_info.dir/build.make CMakeFiles/rpi_info.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dev-test/projects/rpi-el/build/CMakeFiles --progress-num=1,2 "Finished codegen for target rpi_info"
-.PHONY : CMakeFiles/rpi_info.dir/codegen
+apps/system_info/CMakeFiles/system_info.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f apps/system_info/CMakeFiles/system_info.dir/build.make apps/system_info/CMakeFiles/system_info.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/admin/projects/rpi-el/build/CMakeFiles --progress-num=1,2 "Finished codegen for target system_info"
+.PHONY : apps/system_info/CMakeFiles/system_info.dir/codegen
 
 # clean rule for target.
-CMakeFiles/rpi_info.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rpi_info.dir/build.make CMakeFiles/rpi_info.dir/clean
-.PHONY : CMakeFiles/rpi_info.dir/clean
+apps/system_info/CMakeFiles/system_info.dir/clean:
+	$(MAKE) $(MAKESILENT) -f apps/system_info/CMakeFiles/system_info.dir/build.make apps/system_info/CMakeFiles/system_info.dir/clean
+.PHONY : apps/system_info/CMakeFiles/system_info.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

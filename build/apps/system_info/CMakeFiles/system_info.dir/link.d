@@ -1,8 +1,8 @@
-rpi_info: \
+system_info: \
   /usr/lib/gcc/aarch64-linux-gnu/14/../../../aarch64-linux-gnu/Scrt1.o \
   /usr/lib/gcc/aarch64-linux-gnu/14/../../../aarch64-linux-gnu/crti.o \
   /usr/lib/gcc/aarch64-linux-gnu/14/crtbeginS.o \
-  CMakeFiles/rpi_info.dir/src/app/main.c.o \
+  CMakeFiles/system_info.dir/main.c.o \
   /usr/lib/gcc/aarch64-linux-gnu/14/libgcc.a \
   /usr/lib/gcc/aarch64-linux-gnu/14/libgcc_s.so \
   /usr/lib/gcc/aarch64-linux-gnu/14/libgcc_s.so \
@@ -31,7 +31,7 @@ rpi_info: \
 
 /usr/lib/gcc/aarch64-linux-gnu/14/crtbeginS.o:
 
-CMakeFiles/rpi_info.dir/src/app/main.c.o:
+CMakeFiles/system_info.dir/main.c.o:
 
 /usr/lib/gcc/aarch64-linux-gnu/14/libgcc.a:
 

@@ -1,3 +1,9 @@
-/home/dev-test/projects/rpi-el/build/CMakeFiles/rpi_info.dir
-/home/dev-test/projects/rpi-el/build/CMakeFiles/edit_cache.dir
-/home/dev-test/projects/rpi-el/build/CMakeFiles/rebuild_cache.dir
+/home/admin/projects/rpi-el/build/CMakeFiles/edit_cache.dir
+/home/admin/projects/rpi-el/build/CMakeFiles/rebuild_cache.dir
+/home/admin/projects/rpi-el/build/apps/CMakeFiles/edit_cache.dir
+/home/admin/projects/rpi-el/build/apps/CMakeFiles/rebuild_cache.dir
+/home/admin/projects/rpi-el/build/apps/system_info/CMakeFiles/system_info.dir
+/home/admin/projects/rpi-el/build/apps/system_info/CMakeFiles/edit_cache.dir
+/home/admin/projects/rpi-el/build/apps/system_info/CMakeFiles/rebuild_cache.dir
+/home/admin/projects/rpi-el/build/libs/CMakeFiles/edit_cache.dir
+/home/admin/projects/rpi-el/build/libs/CMakeFiles/rebuild_cache.dir

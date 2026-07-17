@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/dev-test/projects/rpi-el/src/app/main.c" "CMakeFiles/rpi_info.dir/src/app/main.c.o" "gcc" "CMakeFiles/rpi_info.dir/src/app/main.c.o.d"
-  "" "rpi_info" "gcc" "CMakeFiles/rpi_info.dir/link.d"
+  "/home/admin/projects/rpi-el/apps/system_info/main.c" "apps/system_info/CMakeFiles/system_info.dir/main.c.o" "gcc" "apps/system_info/CMakeFiles/system_info.dir/main.c.o.d"
+  "" "apps/system_info/system_info" "gcc" "apps/system_info/CMakeFiles/system_info.dir/link.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

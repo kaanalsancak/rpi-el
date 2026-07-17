@@ -1,6 +1,6 @@
-CMakeFiles/rpi_info.dir/src/app/main.c.o: \
- /home/dev-test/projects/rpi-el/src/app/main.c /usr/include/stdc-predef.h \
- /usr/include/stdio.h \
+apps/system_info/CMakeFiles/system_info.dir/main.c.o: \
+ /home/admin/projects/rpi-el/apps/system_info/main.c \
+ /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/aarch64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/aarch64-linux-gnu/bits/wordsize.h \
@@ -20,7 +20,6 @@ CMakeFiles/rpi_info.dir/src/app/main.c.o: \
  /usr/include/aarch64-linux-gnu/bits/types/__FILE.h \
  /usr/include/aarch64-linux-gnu/bits/types/FILE.h \
  /usr/include/aarch64-linux-gnu/bits/types/struct_FILE.h \
- /usr/include/aarch64-linux-gnu/bits/types/cookie_io_functions_t.h \
  /usr/include/aarch64-linux-gnu/bits/stdio_lim.h \
  /usr/include/aarch64-linux-gnu/bits/floatn.h \
  /usr/include/aarch64-linux-gnu/bits/floatn-common.h \
