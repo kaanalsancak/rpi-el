@@ -1,1 +1,2 @@
 add_subdirectory(system_info)
+add_subdirectory(process_demo)

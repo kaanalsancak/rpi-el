@@ -5,5 +5,8 @@
 /home/admin/projects/rpi-el/build/apps/system_info/CMakeFiles/system_info.dir
 /home/admin/projects/rpi-el/build/apps/system_info/CMakeFiles/edit_cache.dir
 /home/admin/projects/rpi-el/build/apps/system_info/CMakeFiles/rebuild_cache.dir
+/home/admin/projects/rpi-el/build/apps/process_demo/CMakeFiles/process_demo.dir
+/home/admin/projects/rpi-el/build/apps/process_demo/CMakeFiles/edit_cache.dir
+/home/admin/projects/rpi-el/build/apps/process_demo/CMakeFiles/rebuild_cache.dir
 /home/admin/projects/rpi-el/build/libs/CMakeFiles/edit_cache.dir
 /home/admin/projects/rpi-el/build/libs/CMakeFiles/rebuild_cache.dir
