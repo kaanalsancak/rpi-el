@@ -1,56 +1,63 @@
-# Lesson 001 — Program vs Process
+# Lesson 001 — Program vs. Process
 
-## 1. Objective
-
-Bu dersin amacý program, process, fork, exec ve wait iliþkisini anlamaktýr.
-
-Ders sonunda aþaðýdaki kavramlar açýklanabilmelidir:
-
-- Program ile process arasýndaki fark
-- Kernel’in process oluþturmadaki rolü
-- `fork()` davranýþý
-- `exec()` davranýþý
-- Parent-child iliþkisi
-- `waitpid()` davranýþý
-- `strace` ile process yaþam döngüsünün gözlemlenmesi
+**Author:** Muhammet Kaan Alsancak  
+**Course:** Embedded Linux From First Principles  
+**Level:** Beginner  
+**Estimated Reading Time:** 35 minutes  
 
 ---
 
-## 2. Program Nedir?
+# 1. Objective
 
-Program, diskte duran pasif bir executable dosyadýr.
+The goal of this lesson is to understand the relationship between a **program**, a **process**, `fork()`, `exec()`, and `waitpid()`.
 
-Bir programýn kendi baþýna:
+After completing this lesson, you should be able to:
 
-- PID deðeri yoktur.
-- Scheduler durumu yoktur.
-- Çalýþan register deðerleri yoktur.
-- Parent process’i yoktur.
-- CPU zamaný yoktur.
-
-Program yalnýzca çalýþtýrýlacak instruction’larý, verileri ve loader tarafýndan kullanýlacak metadata’yý içerir.
+- Explain the difference between a program and a process.
+- Explain the role of the Linux kernel in process creation.
+- Describe how `fork()` works.
+- Describe how `exec()` works.
+- Explain the parent-child relationship.
+- Explain the purpose of `waitpid()`.
+- Observe process creation using `strace`.
 
 ---
 
-## 3. Process Nedir?
+# 2. What Is a Program?
 
-Process, kernel tarafýndan oluþturulan ve yönetilen bir yürütme baðlamýdýr.
+A **program** is a passive executable file stored on disk.
 
-Bir process tipik olarak þunlarý içerir:
+A program by itself has:
 
-- PID ve PPID
-- Kullanýcý ve grup bilgileri
-- Sanal adres alaný
+- No PID
+- No scheduling state
+- No CPU execution context
+- No parent process
+- No execution time
+
+It only contains machine instructions, initialized data, and metadata required to build a running process.
+
+---
+
+# 3. What Is a Process?
+
+A **process** is an execution context created and managed by the operating system kernel.
+
+A typical process contains:
+
+- PID and PPID
+- User and group information
+- Virtual address space
 - Stack
 - Heap
-- Açýk file descriptor’lar
-- Signal durumu
-- Scheduler bilgileri
-- En az bir thread
+- Open file descriptors
+- Signal information
+- Scheduling information
+- One or more threads
 
-Process’in var olmasý ile CPU üzerinde çalýþýyor olmasý ayný þey deðildir.
+A process may exist without currently running on a CPU.
 
-Bir process aþaðýdaki durumlardan birinde olabilir:
+Typical process states include:
 
 - Running
 - Runnable
@@ -60,11 +67,256 @@ Bir process aþaðýdaki durumlardan birinde olabilir:
 
 ---
 
-## 4. Program ve Process Farký
+# 4. Program vs. Process
 
 ```text
 Program
-    Diskte duran pasif executable
+    Passive executable stored on disk
 
 Process
-    Programýn kernel tarafýndan yönetilen çalýþan örneði
+    Running instance managed by the kernel
+```
+
+A single executable may create zero, one, or many processes.
+
+---
+
+# 5. fork()
+
+`fork()` creates a new child process.
+
+```text
+Parent
+   |
+fork()
+   |
+   +------> Parent
+   |
+   +------> Child
+```
+
+Both parent and child continue execution immediately **after** the `fork()` call.
+
+Return values:
+
+```text
+Parent : Child PID
+Child  : 0
+Error  : -1
+```
+
+Example:
+
+```c
+pid_t pid = fork();
+
+if (pid < 0)
+{
+    /* Error */
+}
+else if (pid == 0)
+{
+    /* Child */
+}
+else
+{
+    /* Parent */
+}
+```
+
+---
+
+# 6. fork() Lab
+
+Observed output:
+
+```text
+Before fork: PID=1351 PPID=1104
+Parent: PID=1351 Child PID=1352
+Child : PID=1352 PPID=1351
+```
+
+Observations:
+
+- Parent PID remains unchanged.
+- A new PID is assigned to the child.
+- The child's PPID equals the parent's PID.
+- Both processes continue after `fork()`.
+- Execution order is determined by the scheduler.
+
+---
+
+# 7. exec()
+
+`exec()` does **not** create a new process.
+
+Instead, it replaces the current program image.
+
+```text
+Child (PID=1487)
+Program = process_exec_demo
+
+        exec()
+
+Child (PID=1487)
+Program = /bin/echo
+```
+
+The PID remains the same.
+
+A successful `exec()` never returns.
+
+---
+
+# 8. exec() Lab
+
+Observed output:
+
+```text
+Parent before fork
+Parent after fork
+Child before exec
+Child program replaced by /bin/echo
+Parent: child exited with status=0
+```
+
+Observations:
+
+- `fork()` creates the child.
+- `exec()` keeps the same PID.
+- The child executes a different executable.
+- Code after `exec()` runs only if `exec()` fails.
+
+---
+
+# 9. waitpid()
+
+```c
+waitpid(childPid, &status, 0);
+```
+
+Responsibilities:
+
+- Wait for a specific child.
+- Collect the child's exit status.
+- Prevent zombie processes.
+
+---
+
+# 10. strace Observations
+
+Command:
+
+```bash
+strace -f ./build/apps/process_exec_demo/process_exec_demo
+```
+
+Important system calls:
+
+```text
+execve()
+clone()
+wait4()
+write()
+exit_group()
+```
+
+On this Linux system:
+
+- `fork()` is implemented using `clone()`.
+- `waitpid()` results in the `wait4()` system call.
+
+---
+
+# 11. Execution Flow
+
+```text
+Shell
+ |
+ | execve(process_exec_demo)
+ v
+Parent
+ |
+ | clone()
+ v
+Child
+ |
+ | execve("/bin/echo")
+ v
+Same PID
+ |
+ | exit_group()
+ v
+SIGCHLD
+ |
+Parent wait4()
+ |
+Parent exits
+```
+
+---
+
+# 12. Key Takeaways
+
+- A program and a process are different concepts.
+- A process is a kernel abstraction.
+- `fork()` creates a child process.
+- `exec()` replaces the current program image.
+- `waitpid()` synchronizes parent and child.
+- `printf()` eventually reaches the kernel through `write()`.
+- Child termination generates `SIGCHLD`.
+
+---
+
+# 13. Common Misconceptions
+
+- `exec()` creates a new process. ?
+- The child starts from the beginning of the program. ?
+- The parent always executes before the child. ?
+- `fork()` is called twice. ?
+- A sleeping process is no longer a process. ?
+
+---
+
+# 14. Parking Lot
+
+Topics for future lessons:
+
+- Copy-on-Write
+- Stack and heap after `fork()`
+- Global variables
+- File descriptor inheritance
+- Zombie and orphan processes
+- `task_struct`
+- `clone()` vs. `fork()`
+- ELF loader
+- Dynamic linker
+- `_start` before `main()`
+
+---
+
+# 15. Next Lesson
+
+**Lesson 002 — What Does fork() Copy?**
+
+Topics:
+
+- Address spaces
+- Stack duplication
+- Heap behavior
+- Global variables
+- Copy-on-Write
+- File descriptor inheritance
+
+---
+
+# Learning Outcomes
+
+After completing this lesson, you should be able to:
+
+- Explain the difference between a program and a process.
+- Explain why a process is an operating system abstraction.
+- Describe the behavior of `fork()`.
+- Describe the behavior of `exec()`.
+- Explain the purpose of `waitpid()`.
+- Interpret the basic output of `strace`.
