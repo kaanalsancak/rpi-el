@@ -1,2 +1,4 @@
 add_subdirectory(system_info)
 add_subdirectory(process_demo)
+add_subdirectory(process_fork_demo)
+add_subdirectory(process_exec_demo)

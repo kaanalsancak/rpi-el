@@ -8,5 +8,11 @@
 /home/admin/projects/rpi-el/build/apps/process_demo/CMakeFiles/process_demo.dir
 /home/admin/projects/rpi-el/build/apps/process_demo/CMakeFiles/edit_cache.dir
 /home/admin/projects/rpi-el/build/apps/process_demo/CMakeFiles/rebuild_cache.dir
+/home/admin/projects/rpi-el/build/apps/process_fork_demo/CMakeFiles/process_fork_demo.dir
+/home/admin/projects/rpi-el/build/apps/process_fork_demo/CMakeFiles/edit_cache.dir
+/home/admin/projects/rpi-el/build/apps/process_fork_demo/CMakeFiles/rebuild_cache.dir
+/home/admin/projects/rpi-el/build/apps/process_exec_demo/CMakeFiles/process_exec_demo.dir
+/home/admin/projects/rpi-el/build/apps/process_exec_demo/CMakeFiles/edit_cache.dir
+/home/admin/projects/rpi-el/build/apps/process_exec_demo/CMakeFiles/rebuild_cache.dir
 /home/admin/projects/rpi-el/build/libs/CMakeFiles/edit_cache.dir
 /home/admin/projects/rpi-el/build/libs/CMakeFiles/rebuild_cache.dir

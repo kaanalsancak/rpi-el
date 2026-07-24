@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/process_fork_demo.dir/link.d CMakeFiles/process_fork_demo.dir/main.c.o -o process_fork_demo

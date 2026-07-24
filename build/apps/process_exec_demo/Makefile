@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/admin/projects/rpi-el/build/CMakeFiles /home/admin/projects/rpi-el/build//CMakeFiles/progress.marks
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	cd /home/admin/projects/rpi-el/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/admin/projects/rpi-el/build/CMakeFiles /home/admin/projects/rpi-el/build/apps/process_exec_demo//CMakeFiles/progress.marks
+	cd /home/admin/projects/rpi-el/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 apps/process_exec_demo/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/admin/projects/rpi-el/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean
+	cd /home/admin/projects/rpi-el/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 apps/process_exec_demo/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,70 +103,56 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/admin/projects/rpi-el/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 apps/process_exec_demo/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/admin/projects/rpi-el/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 apps/process_exec_demo/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/admin/projects/rpi-el/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named system_info
+# Convenience name for target.
+apps/process_exec_demo/CMakeFiles/process_exec_demo.dir/rule:
+	cd /home/admin/projects/rpi-el/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 apps/process_exec_demo/CMakeFiles/process_exec_demo.dir/rule
+.PHONY : apps/process_exec_demo/CMakeFiles/process_exec_demo.dir/rule
 
-# Build rule for target.
-system_info: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 system_info
-.PHONY : system_info
-
-# fast build rule for target.
-system_info/fast:
-	$(MAKE) $(MAKESILENT) -f apps/system_info/CMakeFiles/system_info.dir/build.make apps/system_info/CMakeFiles/system_info.dir/build
-.PHONY : system_info/fast
-
-#=============================================================================
-# Target rules for targets named process_demo
-
-# Build rule for target.
-process_demo: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 process_demo
-.PHONY : process_demo
-
-# fast build rule for target.
-process_demo/fast:
-	$(MAKE) $(MAKESILENT) -f apps/process_demo/CMakeFiles/process_demo.dir/build.make apps/process_demo/CMakeFiles/process_demo.dir/build
-.PHONY : process_demo/fast
-
-#=============================================================================
-# Target rules for targets named process_fork_demo
-
-# Build rule for target.
-process_fork_demo: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 process_fork_demo
-.PHONY : process_fork_demo
-
-# fast build rule for target.
-process_fork_demo/fast:
-	$(MAKE) $(MAKESILENT) -f apps/process_fork_demo/CMakeFiles/process_fork_demo.dir/build.make apps/process_fork_demo/CMakeFiles/process_fork_demo.dir/build
-.PHONY : process_fork_demo/fast
-
-#=============================================================================
-# Target rules for targets named process_exec_demo
-
-# Build rule for target.
-process_exec_demo: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 process_exec_demo
+# Convenience name for target.
+process_exec_demo: apps/process_exec_demo/CMakeFiles/process_exec_demo.dir/rule
 .PHONY : process_exec_demo
 
 # fast build rule for target.
 process_exec_demo/fast:
-	$(MAKE) $(MAKESILENT) -f apps/process_exec_demo/CMakeFiles/process_exec_demo.dir/build.make apps/process_exec_demo/CMakeFiles/process_exec_demo.dir/build
+	cd /home/admin/projects/rpi-el/build && $(MAKE) $(MAKESILENT) -f apps/process_exec_demo/CMakeFiles/process_exec_demo.dir/build.make apps/process_exec_demo/CMakeFiles/process_exec_demo.dir/build
 .PHONY : process_exec_demo/fast
+
+main.o: main.c.o
+.PHONY : main.o
+
+# target to build an object file
+main.c.o:
+	cd /home/admin/projects/rpi-el/build && $(MAKE) $(MAKESILENT) -f apps/process_exec_demo/CMakeFiles/process_exec_demo.dir/build.make apps/process_exec_demo/CMakeFiles/process_exec_demo.dir/main.c.o
+.PHONY : main.c.o
+
+main.i: main.c.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.c.i:
+	cd /home/admin/projects/rpi-el/build && $(MAKE) $(MAKESILENT) -f apps/process_exec_demo/CMakeFiles/process_exec_demo.dir/build.make apps/process_exec_demo/CMakeFiles/process_exec_demo.dir/main.c.i
+.PHONY : main.c.i
+
+main.s: main.c.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.c.s:
+	cd /home/admin/projects/rpi-el/build && $(MAKE) $(MAKESILENT) -f apps/process_exec_demo/CMakeFiles/process_exec_demo.dir/build.make apps/process_exec_demo/CMakeFiles/process_exec_demo.dir/main.c.s
+.PHONY : main.c.s
 
 # Help Target
 help:
@@ -176,10 +162,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... process_demo"
 	@echo "... process_exec_demo"
-	@echo "... process_fork_demo"
-	@echo "... system_info"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 
@@ -191,6 +177,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/admin/projects/rpi-el/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

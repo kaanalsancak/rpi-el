@@ -10,6 +10,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/admin/projects/rpi-el/CMakeLists.txt"
   "/home/admin/projects/rpi-el/apps/CMakeLists.txt"
   "/home/admin/projects/rpi-el/apps/process_demo/CMakeLists.txt"
+  "/home/admin/projects/rpi-el/apps/process_exec_demo/CMakeLists.txt"
+  "/home/admin/projects/rpi-el/apps/process_fork_demo/CMakeLists.txt"
   "/home/admin/projects/rpi-el/apps/system_info/CMakeLists.txt"
   "CMakeFiles/3.31.6/CMakeCCompiler.cmake"
   "CMakeFiles/3.31.6/CMakeSystem.cmake"
@@ -50,6 +52,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "apps/CMakeFiles/CMakeDirectoryInformation.cmake"
   "apps/system_info/CMakeFiles/CMakeDirectoryInformation.cmake"
   "apps/process_demo/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "apps/process_fork_demo/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "apps/process_exec_demo/CMakeFiles/CMakeDirectoryInformation.cmake"
   "libs/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
@@ -57,4 +61,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "apps/system_info/CMakeFiles/system_info.dir/DependInfo.cmake"
   "apps/process_demo/CMakeFiles/process_demo.dir/DependInfo.cmake"
+  "apps/process_fork_demo/CMakeFiles/process_fork_demo.dir/DependInfo.cmake"
+  "apps/process_exec_demo/CMakeFiles/process_exec_demo.dir/DependInfo.cmake"
   )
