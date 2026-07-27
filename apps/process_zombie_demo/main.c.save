@@ -1,0 +1,65 @@
+#include <stdio.h> include <stdlib.h> include <sys/types.h> include <sys/wait.h> 
+#include <unistd.h>
+Dosyaya şunu ekle: 
+/*****************************************************************************/ /**
+ * @brief Demonstrates the lifecycle of a zombie process. * * @return EXIT_SUCCESS 
+ when the demonstration completes successfully, * otherwise EXIT_FAILURE. */
+#include <stdio.h>int main(void) include <stdlib.h>{ include <sys/types.h> pid_t 
+#childProcessId; include <sys/wait.h> pid_t terminatedProcessId; include <unistd.h> 
+#int childStatus;
+
+    printf("[PARENT] Process started. PID: %ld\n", (long)getpid()); 
+/*****************************************************************************/ /** 
+childProcessId = fork();
+ * @brief Demonstrates the lifecycle of a zombie process. if (childProcessId < 0) { * 
+ perror("fork"); * @return EXIT_SUCCESS when the demonstration completes 
+ successfully, return EXIT_FAILURE; * otherwise EXIT_FAILURE.  } */
+int main(void) if (childProcessId == 0) { { printf("[CHILD] PID : %ld\n", 
+(long)getpid());
+    pid_t childProcessId; printf("[CHILD] PPID: %ld\n", (long)getppid()); 
+        printf("[CHILD] Terminating now.\n");
+    pid_t terminatedProcessId; exit(42); int childStatus; }
+
+    printf("[PARENT] Child created. PID: %ld\n", (long)childProcessId); 
+    printf("[PARENT] Sleeping for 60 seconds.\n"); printf("[PARENT] During this 
+    period, the child will be a zombie.\n"); printf("[PARENT] Inspect child PID %ld 
+    from another terminal.\n", printf("[PARENT] Process started. PID: %ld\n", 
+    (long)getpid()); (long)childProcessId);
+
+    sleep(60); childProcessId = fork(); printf("[PARENT] Calling waitpid() to collect 
+    child status.\n");
+
+    terminatedProcessId = waitpid(childProcessId, &childStatus, 0); if 
+    (childProcessId < 0) {
+        perror("fork"); if (terminatedProcessId < 0) { return EXIT_FAILURE; 
+        perror("waitpid"); return EXIT_FAILURE;
+    }    }
+
+    if (WIFEXITED(childStatus)) { printf("[PARENT] Child exit status: %d\n", if 
+    (childProcessId == 0) WEXITSTATUS(childStatus)); { }
+        printf("[CHILD] PID : %ld\n", (long)getpid()); printf("[PARENT] Zombie 
+    process has been removed.\n");
+        printf("[CHILD] PPID: %ld\n", (long)getppid()); return EXIT_SUCCESS; 
+        printf("[CHILD] Terminating now.\n");} exit(42);
+    }
+    printf("[PARENT] Child created. PID: %ld\n", (long)childProcessId); 
+    printf("[PARENT] Sleeping for 20 seconds.\n"); printf("[PARENT] During this 
+    period, the child will be a zombie.\n"); printf("[PARENT] Inspect child PID %ld 
+    from another terminal.\n",
+           (long)childProcessId); sleep(20); printf("[PARENT] Calling waitpid() to 
+    collect child status.\n"); terminatedProcessId = waitpid(childProcessId, 
+    &childStatus, 0); if (terminatedProcessId < 0) {
+        perror("waitpid"); return EXIT_FAILURE;
+    }
+    if (WIFEXITED(childStatus)) { printf("[PARENT] Child exit status: %d\n", 
+               WEXITSTATUS(childStatus));
+    }
+    printf("[PARENT] Zombie process has been removed.\n"); return EXIT_SUCCESS;
+}
+2. CMake dosyasını oluştur nano apps/process_zombie_demo/CMakeLists.txt İçeriği: 
+add_executable(process_zombie_demo
+    main.c ) target_compile_options(process_zombie_demo PRIVATE -Wall -Wextra 
+    -Wpedantic
+) 3. Uygulamayı projeye ekle nano apps/CMakeLists.txt Sonuna ekle: 
+add_subdirectory(process_zombie_demo) 4. Derle
+cmake -S . -B build
