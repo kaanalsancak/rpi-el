@@ -12,4 +12,6 @@ add_subdirectory(mutex_counter_demo)
 add_subdirectory(thread_memory_demo)
 add_subdirectory(condition_variable_demo)
 add_subdirectory(semaphore_demo)
-
+add_subdirectory(deadlock_demo)
+add_subdirectory(starvation_demo)
+add_subdirectory(livelock_demo)
