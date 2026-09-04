@@ -21,6 +21,7 @@ Use the links below to open a lesson document or jump directly to the related ap
 | 008 | Condition Variables | [Open lesson](lessons/Lesson-008-Condition-Variables.md) | [condition_variable_demo](../apps/condition_variable_demo/) | `pthread_cond_wait()`, `pthread_cond_signal()`, predicate, busy waiting | Completed |
 | 009 | POSIX Semaphores | [Open lesson](lessons/Lesson-009-Semaphores.md) | [semaphore_demo](../apps/semaphore_demo/) | `sem_wait()`, `sem_post()`, counting semaphore, stored tokens | Completed |
 | 010 | [Deadlock, Starvation, and Livelock](lessons/Lesson-010-Deadlock-Starvation-and-Livelock.md) | Deadlock, lock ordering, starvation, livelock, fairness, and progress |
+| 011 | [Read-Write Locks and Barriers](lessons/Lesson-011-Read-Write-Locks-and-Barriers.md) | Read-write locks, concurrent readers, exclusive writers, barriers, and phase synchronization |
 
 ---
 
